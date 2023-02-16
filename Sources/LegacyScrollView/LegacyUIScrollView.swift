@@ -75,17 +75,28 @@ public class LegacyUIScrollView: UIScrollView {
     }()
 
     func updateView() {
-        NSLayoutConstraint.deactivate(contentConstraints)
-        contentView.removeFromSuperview()
-        addSubview(contentView)
-        if axis == .vertical {
-            contentSize.height = contentView.sizeThatFits(.greatest).height
-        } else {
-            contentSize.width = contentView.sizeThatFits(.greatest).width
-        }
+//        NSLayoutConstraint.deactivate(contentConstraints)
+//        contentView.removeFromSuperview()
+//        addSubview(contentView)
+//        if axis == .vertical {
+//            contentSize.height = contentView.sizeThatFits(.greatest).height
+//        } else {
+//            contentSize.width = contentView.sizeThatFits(.greatest).width
+//        }
+//
+//        NSLayoutConstraint.activate(contentConstraints)
+//        contentView.sizeToFit()
 
-        NSLayoutConstraint.activate(contentConstraints)
-        contentView.sizeToFit()
+      NSLayoutConstraint.deactivate(contentConstraints)
+      contentView.removeFromSuperview()
+      addSubview(contentView)
+      NSLayoutConstraint.activate(contentConstraints)
+      contentView.sizeToFit()
+      if axis == .vertical {
+        contentSize.height = contentView.frame.height
+      } else {
+        contentSize.width = contentView.frame.width
+      }
     }
 }
 
